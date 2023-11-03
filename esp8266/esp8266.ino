@@ -31,20 +31,7 @@ void loop() {
     // 解析数据并发送到后端
     DynamicJsonDocument jsonDoc(1024);
     jsonDoc["deviceId"] = deviceId;
-
-    // 解析从Arduino Mega 2560接收到的数据
-    String delimiter = ",";
-    int sensorIndex = 0;
-    size_t pos = 0;
-
-    while ((pos = data.indexOf(delimiter)) != -1 && sensorIndex < 9) {
-      String sensorValue = data.substring(0, pos);
-      String sensorKey = "fsr" + String(sensorIndex);
-      int sensorReading = sensorValue.toFloat(); // 将字符串转换为浮点数
-      jsonDoc["data"][sensorKey] = sensorReading;
-      data = data.substring(pos + 1);
-      sensorIndex++;
-    }
+    jsonDoc["data"] = data;
 
     // 将数据发送到后端
     WiFiClient client;
