@@ -8,8 +8,6 @@ int FSR_index = 0;
 
 void setup() {
   Serial.begin(115200);
-  esp8266.begin(115200);
-  esp8266.flush();
 }
 
 void loop() {
