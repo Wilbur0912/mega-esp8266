@@ -1,3 +1,4 @@
+
 int FSR_in[9] = {
   A0, A1, A2, A3, A4, A5, A6, A7, A8
 };
@@ -8,11 +9,13 @@ int FSR_index = 0;
 
 void setup() {
   Serial.begin(115200);
+
 }
 
 void loop() {
   handleFSR();
 }
+
 
 void handleFSR() {
   // put your main code here, to run repeatedly:
@@ -34,5 +37,6 @@ void handleFSR() {
     Serial.print(avg);
     Serial.print(",");
   }
+  Serial.println("0, 1024");
   FSR_index = (FSR_index + 1) % 100;
 }
